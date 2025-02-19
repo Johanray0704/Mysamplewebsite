@@ -1,18 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
+body {
+    background: url('bg.jpeg') no-repeat center center;
+    background-size: cover;
+}
+
+/* Sidebar */
 .sidebar {
     position: fixed;
-    right:-250px; /* Initially hidden on the right */
+    right: -250px; /* Initially hidden */
     width: 250px;
     height: 100%;
     background: #052513;
-    transition: all 0.5s ease;
+    transition: right 0.5s ease-in-out;
+    z-index: 1000;
 }
 
 .sidebar header {
@@ -24,260 +32,188 @@
     user-select: none;
 }
 
+.sidebar ul {
+    list-style: none;
+}
+
 .sidebar ul a {
     display: block;
-    height: 100%;
-    width: 100%;
-    line-height: 65px;
-    font-size: 20px;
+    font-size: 18px;
     color: white;
-    padding-left: 40px;
-    box-sizing: border-box;
-    border-bottom: 1px solid black;
-    border-top: 1px solid rgba(255,255,255,.1);
-    transition: .4s;
+    padding: 15px 20px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
 }
 
-ul li:hover a {
-    padding-left: 50px;
+.sidebar ul a:hover {
+    background: #285a41;
+    padding-left: 30px;
 }
-
-.sidebar ul a i {
-    margin-right: 16px;
-}
-.after ul li a:hover::after {
-    content:'';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 5px; 
-    background-color: rgb(205, 55, 55);
-    transform: scaleX(1);
-    transform-origin: left;
-    transition: transform 0.3s ease-in-out;
-  }
 
 /* Checkbox (hidden) */
 #check {
     display: none;
 }
 
-/* Bar Icon button */
-label #btn,
+/* Menu Button */
+label #btn {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    background: #054803;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
 label #cancel {
     position: absolute;
-    background: rgb(5, 57, 3);
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-label #btn {
-    right: 40px; /* Move the menu button completely to the right */
-    top: 25px;
-    font-size: 35px;
+    right: -40px;
+    top: 15px;
+    font-size: 25px;
     color: white;
-    padding: 6px 12px;
-    margin-top:200px;
-    transition: all 0.5s;
+    background: red;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
-label #cancel {
-    z-index: 1111;
-    right: -195px; /* Move the cancel button completely to the right */
-    top: 17px;
-    font-size: 30px;
-    color:#e9e3e3;
-    padding: 4px 9px;
-    transition: all 0.5s ease;
-}
-
-/* When checkbox is checked (sidebar opens) */
+/* Show Sidebar */
 #check:checked ~ .sidebar {
-    right: 0; /* Sidebar comes in from the right */
+    right: 0;
 }
 
 #check:checked ~ label #btn {
-    opacity: 0;
-    pointer-events: none;
+    display: none;
 }
 
 #check:checked ~ label #cancel {
-    right: 40px;
+    right: 15px;
 }
 
-#check:checked ~ section {
-    margin-right: 250px; /* Push the content to the left when sidebar is open */
-}
-
-section {
-    background: url(bg.jpeg) no-repeat;
-    background-position: center;
-   
-}
+/* Navbar */
 nav {
     background-color: rgb(5, 57, 3);
     color: white;
-    padding: 25px 10px;
+    padding: 15px;
     font-size: 18px;
 }
-.p1{
-    display: inline-block;
-    
-}
+
 .navdiv {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 20px;
 }
 
 .navbar-item {
     list-style: none;
-    display: inline-block;
-    margin-right: 25px;
+    display: flex;
+    gap: 20px;
 }
 
-a {
-    color: red;
-}
-
-header {
-    text-align: center;
-    padding: 20px;
-}
-
-header h1 {
-    font-size: 24px;
-    font-weight: 200;
-}
-
-section.content {
-    padding: 20px;
-}
-
-
-footer {
-    background-color: rgb(5, 57, 3);
+.navbar-item a {
+    text-decoration: none;
     color: white;
-    text-align: center;
-    padding: 10px;
+    font-size: 18px;
+    transition: color 0.3s;
 }
 
-footer h3 {
-    text-align: left;
-    padding-left: 50px;
+.navbar-item a:hover {
+    color: #a3ef7c;
 }
 
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-li {
-    display: inline;
-    margin-right: 50px;
-}
-
-li a {
-    color: white;
-    font-weight: bold;
-}
-
+/* Dropdown */
 .dropdown {
     position: relative;
-    display: inline-block;
-}
-.dropdown-menu::before{
-    content:'';
-    position:absolute;
-    
-    left:100px;
-    border: 10px solid transparent;
-    border-bottom-color: #e9e3e3;
-
 }
 
 .dropdown-menu {
     position: absolute;
     display: none;
-    background-color: rgb(5, 57, 3);
+    background: rgb(5, 57, 3);
     min-width: 150px;
-    border: 1px solid #141414;
-    box-shadow: 0 8px 16px rgba(205, 111, 111, 0.2);
+    border: 1px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
 .dropdown-menu li {
-    margin: 0;
-    padding: 5px;
-    
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .dropdown-menu li a {
     color: white;
+    text-decoration: none;
     display: block;
-    padding: 10px;
-   
 }
 
 .dropdown-menu li a:hover {
-    background-color: rgb(25, 148, 25);
+    background: rgb(25, 148, 25);
 }
 
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
-/* Feedback form styling */
-input[type="text"], input[type="message"], textarea {
-    width: 150%;
-    padding: 12px;
+/* Buttons */
+input[type="button"] {
+    background-color: #0a3223;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+input[type="button"]:hover {
+    background: #285a41;
+}
+
+/* Forms */
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
     margin: 10px 0;
-    border-radius: 12px;
+    border-radius: 8px;
     border: 2px solid #73AD21;
     background-color: #79d7b4;
     color: white;
 }
 
-
-input[type="button"] {
-    background-color: #0a3223;
-    border: none;
+/* Footer */
+footer {
+    background: rgb(5, 57, 3);
     color: white;
-    padding: 14px 29px;
-    border-radius: 20px;
-    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
 }
 
-.image {
-    margin-right: 1200px;
-    display: inline;
-}
-.navbar-item{
-    margin-right: 400px;
-    display: inline;
-}
-.navbar-item1{
-   margin-right:500px;
-   display: inline;
-}
-.text {
-    display: inline;
-    margin-top: -50px;
+footer h3 {
+    text-align: left;
+    padding-left: 20px;
 }
 
-.image1 {
-    display: inline;
-    margin-top: -100px;
-}
-.sports{
-    
-    margin-top: -40px;
-    margin-left:-500px;
-}
-.but:hover{
-    background-color: #a3ef7c;
-}
-form{
-    margin-left: -90px;
+/* Media Queries */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .navbar-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dropdown-menu {
+        min-width: 120px;
+    }
 }
