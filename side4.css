@@ -1,89 +1,60 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-
-body {
-    background: url('bg.jpeg') no-repeat center center;
-    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 /* Sidebar */
 .sidebar {
     position: fixed;
-    right: -250px; /* Initially hidden */
+    right: -250px;
     width: 250px;
     height: 100%;
     background: #052513;
-    transition: right 0.5s ease-in-out;
-    z-index: 1000;
+    transition: 0.5s;
 }
 
 .sidebar header {
     font-size: 22px;
     color: white;
-    line-height: 70px;
     text-align: center;
     background: #368a5b;
-    user-select: none;
-}
-
-.sidebar ul {
-    list-style: none;
 }
 
 .sidebar ul a {
     display: block;
-    font-size: 18px;
     color: white;
-    padding: 15px 20px;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: 0.3s;
+    padding: 15px;
+    border-bottom: 1px solid black;
 }
 
-.sidebar ul a:hover {
-    background: #285a41;
-    padding-left: 30px;
-}
-
-/* Checkbox (hidden) */
 #check {
     display: none;
 }
 
-/* Menu Button */
 label #btn {
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    font-size: 30px;
-    background: #054803;
+    position: absolute;
+    right: 40px;
+    top: 25px;
+    font-size: 35px;
     color: white;
-    padding: 10px;
-    border-radius: 5px;
+    background: rgb(5, 57, 3);
+    padding: 6px 12px;
     cursor: pointer;
-    transition: 0.5s;
 }
 
 label #cancel {
     position: absolute;
-    right: -40px;
-    top: 15px;
-    font-size: 25px;
+    right: -250px;
+    top: 17px;
+    font-size: 30px;
     color: white;
-    background: red;
-    padding: 8px;
-    border-radius: 5px;
+    background: rgb(5, 57, 3);
+    padding: 6px 12px;
     cursor: pointer;
-    transition: 0.5s;
 }
 
-/* Show Sidebar */
 #check:checked ~ .sidebar {
     right: 0;
 }
@@ -93,127 +64,12 @@ label #cancel {
 }
 
 #check:checked ~ label #cancel {
-    right: 15px;
+    right: 40px;
 }
 
-/* Navbar */
-nav {
-    background-color: rgb(5, 57, 3);
+nav, footer {
+    background: rgb(5, 57, 3);
     color: white;
     padding: 15px;
-    font-size: 18px;
-}
-
-.navdiv {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-}
-
-.navbar-item {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.navbar-item a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    transition: color 0.3s;
-}
-
-.navbar-item a:hover {
-    color: #a3ef7c;
-}
-
-/* Dropdown */
-.dropdown {
-    position: relative;
-}
-
-.dropdown-menu {
-    position: absolute;
-    display: none;
-    background: rgb(5, 57, 3);
-    min-width: 150px;
-    border: 1px solid black;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.dropdown-menu li {
-    padding: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dropdown-menu li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-menu li a:hover {
-    background: rgb(25, 148, 25);
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-/* Buttons */
-input[type="button"] {
-    background-color: #0a3223;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-input[type="button"]:hover {
-    background: #285a41;
-}
-
-/* Forms */
-input[type="text"], textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: 2px solid #73AD21;
-    background-color: #79d7b4;
-    color: white;
-}
-
-/* Footer */
-footer {
-    background: rgb(5, 57, 3);
-    color: white;
     text-align: center;
-    padding: 10px;
-    margin-top: 20px;
-}
-
-footer h3 {
-    text-align: left;
-    padding-left: 20px;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 200px;
-    }
-
-    .navbar-item {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .dropdown-menu {
-        min-width: 120px;
-    }
 }
