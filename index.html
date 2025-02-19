@@ -15,7 +15,7 @@
         <i class="fas fa-times" id="cancel"></i>
     </label>
 
-    <!-- Sidebar Content -->
+    <!-- Sidebar -->
     <div class="sidebar">
         <header>My App</header>
         <ul>
@@ -32,27 +32,28 @@
     <!-- Main Navigation -->
     <nav>
         <div class="navdiv">
-            <img src="https://johanray0704.github.io/Mysamplewebsite/images/flag.png" alt="Indian Flag" width="30" height="30">
-
+            <img src="images/flag.png" width="30" height="30" alt="Flag">
             <ul>
                 <li class="navbar-item" style="margin-left: 50px;">Government of India</li>
                 <li class="navbar-item1" style="margin-left:1px;">Skip to the content</li>
-                <li><img src="https://johanray0704.github.io/Mysamplewebsite/images/search.png" width="30" height="30" style="float:right;" alt="Search Icon"></li>
+                <li><img src="images/search.png" width="30" height="30" style="float:right;"></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Header -->
     <header>
-        <img src="https://johanray0704.github.io/Mysamplewebsite/images/gov.jpg" alt="Government Logo" width="100" height="100">
+        <img class="image" src="images/gov.png" width="100" height="100" alt="Government Logo">
         <h1 class="sports">Sports and Youth Affairs Department, Puducherry</h1>
-        <img src="https://johanray0704.github.io/Mysamplewebsite/images/Digital-india-black.jpg" alt="Digital India" width="170" height="100">
+        <img class="image1" src="images/Digital-india-black.jpg" width="170" height="100" alt="Digital India">
     </header>
 
+    <!-- Navigation Bar -->
     <nav>
         <ul>
-            <li style="margin-left:150px;"><a href="#">Home</a></li>
+            <li style="margin-left:150px;">Home</li>
             <li class="dropdown">
-                <a href="#">About Department</a>
+                About Department
                 <ul class="dropdown-menu">
                     <li><a href="#">Introduction</a></li>
                     <li><a href="#">Directory</a></li>
@@ -81,33 +82,35 @@
         </ul>
     </nav>
 
+    <!-- Feedback Section -->
     <section class="content">
-        <p class="p1">Home <a href="https://johanray0704.github.io/Mysamplewebsite/feedback.html">Feedback</a></p>
+        <p class="p1">Home > </p><a href="feedback.html">Feedback</a>
         <center> 
-            <form name="myForm">
-                <center><h2>Feedback</h2></center>
+            <form name="myForm" action="submit_feedback.php" method="POST">
+                <h2>Feedback</h2>
                 <table align="center">
-                    <tr><td><b>Name</b></td><td><input type="text" name="fname"></td></tr>
-                    <tr><td><b>Phone number</b></td><td><input type="text" name="lname"></td></tr>
-                    <tr><td><b>Email</b></td><td><input type="text" name="email"></td></tr>
-                    <tr><td><b>Subject</b></td><td><input type="text" name="subject"></td></tr>
-                    <tr><td><b>Message</b></td><td><textarea name="message"></textarea></td></tr>
+                    <tr><td><b>Name</b></td><td><input type="text" name="fname" required></td></tr>
+                    <tr><td><b>Phone Number</b></td><td><input type="text" name="lname" required></td></tr>
+                    <tr><td><b>Email</b></td><td><input type="email" name="email" required></td></tr>
+                    <tr><td><b>Subject</b></td><td><input type="text" name="subject" required></td></tr>
+                    <tr><td><b>Message</b></td><td><textarea name="message" required></textarea></td></tr>
                     <tr><td></td><td><input class="but" type="submit" value="Submit"></td></tr>
                 </table>
             </form>
         </center>
     </section>
 
-    <footer class="footerstyle">
+    <!-- Footer -->
+    <footer>
         <center>
-            <p>FeedBack | Web Policies | Contact Us | Help</p><br>
+            <p>Feedback | Web Policies | Contact Us | Help</p>
             <p>Designed by Pegs, Puducherry. Last Update: 18 November 2024</p>
         </center>
-        <p>For any query regarding this website, please contact the Web Information Manager:<br>
+        <p>For any query regarding this website, please contact:<br>
            P.K. Rudra Goud, Director of School Education.<br>
            Phone: 0413-2207202<br>
            Email: dse-edn@py.gov.in</p>
-        <h3>Sports and Youth Affairs Department<br>Puducherry</h3>
+        <h3>Sports and Youth Affairs Department, Puducherry</h3>
         <center><p>Website Visitors: 17387</p></center>
     </footer>
 </body>
