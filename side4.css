@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
 /* ---------- GLOBAL ---------- */
 * {
     margin: 0;
@@ -6,37 +8,11 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
-/* ---------- NAVBAR ---------- */
-nav {
-    background-color: rgb(5, 57, 3);
-    color: white;
-    padding: 20px;
+body {
+    overflow-x: hidden;
 }
 
-.navdiv {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap; /* KEY for mobile */
-}
-
-ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-li {
-    margin: 0;
-}
-
-li a {
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-/* ---------- SIDEBAR (same logic) ---------- */
+/* ---------- SIDEBAR ---------- */
 .sidebar {
     position: fixed;
     right: -250px;
@@ -46,10 +22,126 @@ li a {
     transition: all 0.5s ease;
 }
 
-/* ---------- CONTENT IMAGE + TEXT ---------- */
+.sidebar header {
+    font-size: 22px;
+    color: white;
+    line-height: 70px;
+    text-align: center;
+    background: #368a5b;
+}
+
+.sidebar ul a {
+    display: block;
+    line-height: 65px;
+    font-size: 20px;
+    color: white;
+    padding-left: 40px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid rgba(255,255,255,.1);
+    transition: 0.4s;
+}
+
+.sidebar ul a:hover {
+    padding-left: 50px;
+}
+
+/* ---------- SIDEBAR TOGGLE ---------- */
+#check {
+    display: none;
+}
+
+label #btn,
+label #cancel {
+    position: absolute;
+    background: rgb(5, 57, 3);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+label #btn {
+    right: 20px;
+    top: 25px;
+    font-size: 32px;
+    color: white;
+    padding: 6px 12px;
+}
+
+label #cancel {
+    right: -200px;
+    top: 20px;
+    font-size: 30px;
+    color: white;
+}
+
+#check:checked ~ .sidebar {
+    right: 0;
+}
+
+#check:checked ~ label #btn {
+    opacity: 0;
+}
+
+#check:checked ~ label #cancel {
+    right: 20px;
+}
+
+/* ---------- NAVBAR ---------- */
+nav {
+    background-color: rgb(5, 57, 3);
+    padding: 20px;
+}
+
+.navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* ---------- DROPDOWN ---------- */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    display: none;
+    background-color: rgb(5, 57, 3);
+    min-width: 160px;
+    z-index: 10;
+}
+
+.dropdown-menu li a {
+    padding: 10px;
+    display: block;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* ---------- HEADER CONTENT (IMAGE + TEXT) ---------- */
 .header-content {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 20px;
     padding: 20px;
     flex-wrap: wrap;
@@ -103,7 +195,7 @@ footer {
         align-items: flex-start;
     }
 
-    ul {
+    nav ul {
         flex-direction: column;
         width: 100%;
     }
