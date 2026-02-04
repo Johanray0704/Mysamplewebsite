@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
-
-/* ---------- GLOBAL ---------- */
 * {
     margin: 0;
     padding: 0;
@@ -8,14 +6,9 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
-body {
-    overflow-x: hidden;
-}
-
-/* ---------- SIDEBAR ---------- */
 .sidebar {
     position: fixed;
-    right: -250px;
+    right:-250px; /* Initially hidden on the right */
     width: 250px;
     height: 100%;
     background: #052513;
@@ -28,28 +21,49 @@ body {
     line-height: 70px;
     text-align: center;
     background: #368a5b;
+    user-select: none;
 }
 
 .sidebar ul a {
     display: block;
+    height: 100%;
+    width: 100%;
     line-height: 65px;
     font-size: 20px;
     color: white;
     padding-left: 40px;
+    box-sizing: border-box;
     border-bottom: 1px solid black;
     border-top: 1px solid rgba(255,255,255,.1);
-    transition: 0.4s;
+    transition: .4s;
 }
 
-.sidebar ul a:hover {
+ul li:hover a {
     padding-left: 50px;
 }
 
-/* ---------- SIDEBAR TOGGLE ---------- */
+.sidebar ul a i {
+    margin-right: 16px;
+}
+.after ul li a:hover::after {
+    content:'';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px; 
+    background-color: rgb(205, 55, 55);
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+  }
+
+/* Checkbox (hidden) */
 #check {
     display: none;
 }
 
+/* Bar Icon button */
 label #btn,
 label #cancel {
     position: absolute;
@@ -59,109 +73,164 @@ label #cancel {
 }
 
 label #btn {
-    right: 20px;
+    right: 40px; /* Move the menu button completely to the right */
     top: 25px;
-    font-size: 32px;
+    font-size: 35px;
     color: white;
     padding: 6px 12px;
+    margin-top:200px;
+    transition: all 0.5s;
 }
 
 label #cancel {
-    right: -200px;
-    top: 20px;
+    z-index: 1111;
+    right: -195px; /* Move the cancel button completely to the right */
+    top: 17px;
     font-size: 30px;
-    color: white;
+    color:#e9e3e3;
+    padding: 4px 9px;
+    transition: all 0.5s ease;
 }
 
+/* When checkbox is checked (sidebar opens) */
 #check:checked ~ .sidebar {
-    right: 0;
+    right: 0; /* Sidebar comes in from the right */
 }
 
 #check:checked ~ label #btn {
     opacity: 0;
+    pointer-events: none;
 }
 
 #check:checked ~ label #cancel {
-    right: 20px;
+    right: 40px;
 }
 
-/* ---------- NAVBAR ---------- */
+#check:checked ~ section {
+    margin-right: 250px; /* Push the content to the left when sidebar is open */
+}
+
+section {
+    background: url(bg.jpeg) no-repeat;
+    background-position: center;
+   
+}
 nav {
     background-color: rgb(5, 57, 3);
-    padding: 20px;
+    color: white;
+    padding: 25px 10px;
+    font-size: 18px;
 }
-
+.p1{
+    display: inline-block;
+    
+}
 .navdiv {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
 }
 
-nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-nav ul li {
+.navbar-item {
     list-style: none;
+    display: inline-block;
+    margin-right: 25px;
 }
 
-nav ul li a {
+a {
+    color: red;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 200;
+}
+
+section.content {
+    padding: 20px;
+}
+
+
+footer {
+    background-color: rgb(5, 57, 3);
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+footer h3 {
+    text-align: left;
+    padding-left: 50px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    display: inline;
+    margin-right: 50px;
+}
+
+li a {
     color: white;
     font-weight: bold;
-    text-decoration: none;
-    white-space: nowrap;
 }
 
-/* ---------- DROPDOWN ---------- */
 .dropdown {
     position: relative;
+    display: inline-block;
+}
+.dropdown-menu::before{
+    content:'';
+    position:absolute;
+    
+    left:100px;
+    border: 10px solid transparent;
+    border-bottom-color: #e9e3e3;
+
 }
 
 .dropdown-menu {
     position: absolute;
     display: none;
     background-color: rgb(5, 57, 3);
-    min-width: 160px;
-    z-index: 10;
+    min-width: 150px;
+    border: 1px solid #141414;
+    box-shadow: 0 8px 16px rgba(205, 111, 111, 0.2);
+    z-index: 1;
+}
+
+.dropdown-menu li {
+    margin: 0;
+    padding: 5px;
+    
 }
 
 .dropdown-menu li a {
-    padding: 10px;
+    color: white;
     display: block;
+    padding: 10px;
+   
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgb(25, 148, 25);
 }
 
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
-/* ---------- HEADER CONTENT (IMAGE + TEXT) ---------- */
-.header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 20px;
-    flex-wrap: wrap;
-}
-
-.image img {
-    max-width: 100%;
-    height: auto;
-}
-
-.text {
-    max-width: 600px;
-}
-
-/* ---------- FORM ---------- */
-input[type="text"],
-input[type="message"],
-textarea {
-    width: 100%;
-    max-width: 400px;
+/* Feedback form styling */
+input[type="text"], input[type="message"], textarea {
+    width: 150%;
     padding: 12px;
     margin: 10px 0;
     border-radius: 12px;
@@ -169,6 +238,7 @@ textarea {
     background-color: #79d7b4;
     color: white;
 }
+
 
 input[type="button"] {
     background-color: #0a3223;
@@ -179,38 +249,35 @@ input[type="button"] {
     cursor: pointer;
 }
 
-/* ---------- FOOTER ---------- */
-footer {
-    background-color: rgb(5, 57, 3);
-    color: white;
-    text-align: center;
-    padding: 15px;
+.image {
+    margin-right: 1200px;
+    display: inline;
+}
+.navbar-item{
+    margin-right: 400px;
+    display: inline;
+}
+.navbar-item1{
+   margin-right:500px;
+   display: inline;
+}
+.text {
+    display: inline;
+    margin-top: -50px;
 }
 
-/* ---------- MOBILE VIEW ---------- */
-@media (max-width: 768px) {
-
-    .navdiv {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    nav ul {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .sidebar {
-        width: 220px;
-    }
-
-    input[type="text"],
-    textarea {
-        max-width: 100%;
-    }
+.image1 {
+    display: inline;
+    margin-top: -100px;
+}
+.sports{
+    
+    margin-top: -40px;
+    margin-left:-500px;
+}
+.but:hover{
+    background-color: #a3ef7c;
+}
+form{
+    margin-left: -90px;
 }
